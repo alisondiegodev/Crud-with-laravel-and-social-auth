@@ -19,7 +19,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body id="body" class="font-sans antialiased">
+    @if (session('error'))
+        <p class="error">{{ session('error') }}</p>
+    @endif
+    @if (session('success'))
+        <p class="success">{{ session('success') }}</p>
+    @endif
+
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
@@ -33,7 +40,7 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="appears">
             {{ $slot }}
         </main>
     </div>

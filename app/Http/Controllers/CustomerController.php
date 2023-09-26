@@ -22,7 +22,7 @@ class CustomerController extends Controller
         $customer->phone = $request->phone;
         $customer->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', "Usuário criado com successo!");
     }
 
     public function show()
@@ -32,26 +32,41 @@ class CustomerController extends Controller
     }
 
 
-    public function update($id)
-    {
-        $user = Customer::findOrFail($id);
-        if (!$user) {
-            return redirect('/dashboard')->with('msg', "Usuário não existe");
-        }
-
-        $user->save();
-        return redirect('/dashboard')->with('msg', "Usuário editado com sucesso.");
-    }
-
-
     public function destroy($id)
     {
         $user = Customer::findOrFail($id);
         if (!$user) {
-            return redirect('/dashboard')->with('msg', "Usuário não existe");
+            return redirect('/dashboard')->with('success', "Client does not exist!");
         }
 
         $user->delete();
-        return redirect('/dashboard')->with('msg', "Usuário deletado com sucesso.");
+        return redirect('/dashboard')->with('success', "Client deleted with success!");
+    }
+
+    public function edit($id)
+    {
+        $user = Customer::find($id);
+        if (!$user) {
+            return redirect('/dashboard')->with('error', "Client does not exist!");
+        }
+
+
+        return view('customers.edit', ['user' => $user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $user = Customer::find($id);
+        if (!$user) {
+            return redirect('/dashboard')->with('error', "Client does not exist!");
+        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+
+        $user->save();
+
+        return redirect('/dashboard')->with('success', "Client update with success!");
     }
 }

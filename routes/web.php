@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    redirect('/dashboard');
 });
 
 Route::get('/dashboard', [CustomerController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -26,7 +26,8 @@ Route::get('/auth/callback', [SocialiteController::class, 'handleProviderCallbac
 
 Route::get('/create', [CustomerController::class, 'create'])->name('create');
 Route::post('/store', [CustomerController::class, 'store']);
-Route::put('/edit/{id}', [CustomerController::class, 'update']);
+Route::get('/edit/{id}', [CustomerController::class, 'edit']);
+Route::put('/update/{id}', [CustomerController::class, 'update']);
 Route::delete('/delete/{id}', [CustomerController::class, 'destroy']);
 
 

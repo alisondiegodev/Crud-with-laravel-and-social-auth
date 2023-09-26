@@ -12,7 +12,7 @@ table {
     border-collapse: collapse;
 }
 th, td {
-    border: 1px solid #ccc;
+    border: 1px solid #e9e9e9;
     padding: 8px;
     text-align: left;
 }
@@ -31,18 +31,28 @@ tr:nth-child(even) {
     cursor: pointer;
     margin-right: 5px;
     border-radius: 10px;
-    box-shadow: 0px 0px 1px 1px #d7d7d7;
+    box-shadow: -4px 3px 9px 0px #d7d7d785;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     gap: 5px;
+    transition: all .5s ease-in-out;
+    font-weight: 600;
 
 }
 .delete-button {
     background-color: #dc3545 !important;
     color: #fff;
 }
+
+.edit-button {
+    background-color: #fff !important;
+}
+.edit-button:hover, .delete-button:hover {
+    filter: brightness(1);
+    transform: scale(96%);
+} 
 
 .actionButtons {
     display: flex;
@@ -81,8 +91,7 @@ label {
     border-color: #999;
 }
 
-.submitButton {
-    background-color: #007bff;
+.submitButton, .button-2 {
     border: 1px solid #c4c4c4 !important;
     box-shadow: -4px 5px 9px 0px #d7d7d7;
     color: #333;
@@ -92,9 +101,11 @@ label {
     cursor: pointer;
     font-weight: 600;
     transition: all .5s ease-in-out;
+    margin-top: 16px;
+    margin-bottom: 50px;
 }
 
-.submitButton:hover {
+.submitButton:hover, .button-2:hover {
     background-color: #464848;
     color: #fff;
     transform: translateY(-3px);
@@ -104,7 +115,7 @@ label {
 
 .list-header {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: baseline;
     gap: 20px;
     height: 55px;
@@ -118,4 +129,132 @@ label {
     color: #fff;
     font-weight: 600;
     border-radius: 10px;
+    transition: all .5s ease;
+}
+
+.list-header a:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    box-shadow: -4px 5px 9px 0px #999999;
+
+}
+
+/* MESSAGES */
+
+.error, .success {
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    position: fixed;
+    color: #fff;
+    width: 219px;
+    height: 87px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: -3px 8px 15px 0px #999;
+    text-shadow: -3px 1px 3px #0000007a;
+    font-size: 18px;
+    animation: disappear 2s linear;
+    opacity: 0;
+    z-index: 22;
+}
+
+.error {
+    background: linear-gradient(360deg,#af3333, #890505, #eb2020);
+}
+
+.success {
+    background: linear-gradient(360deg,#176717, #058940, #96c796);
+}
+
+
+
+/* MODAL  */
+
+#modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 320px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -44%);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: -17px 12px 38px 6px #b5b5b5;
+    transition: all .5s ease-in;
+    opacity: 0%;
+    z-index: 22;
+
+}
+#modal>p {
+    font-weight: 600;
+    color: #555;
+}
+
+.modalButtons {
+    display: flex;
+    align-items: center;
+}
+
+.modalButtons>.button-2 {
+    margin: 10px; 
+}
+
+
+
+.close {
+    font-size: 18px;
+    top: 11px;
+    right: 14px;
+    position: absolute;
+    box-shadow: 0px 0px 2px 0px gray;
+    padding: 0px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#content {
+    transition: all .5s ease-in-out;
+   
+}
+.appears {
+    animation: appears .5s linear;
+}
+
+
+
+@keyframes appears {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 100%;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 20%;
+
+    }
+    30% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 100%;
+
+    }
+    100% {
+        opacity: 100%;
+
+    }
 }
