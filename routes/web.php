@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
@@ -10,9 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [CustomerController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,5 +22,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/auth/redirect', [SocialiteController::class, 'redirectToProvider']);
 Route::get('/auth/callback', [SocialiteController::class, 'handleProviderCallback']);
+
+
+Route::get('/create', [CustomerController::class, 'create'])->name('create');
+Route::post('/store', [CustomerController::class, 'store']);
+Route::put('/edit/{id}', [CustomerController::class, 'update']);
+Route::delete('/delete/{id}', [CustomerController::class, 'destroy']);
+
 
 require __DIR__ . '/auth.php';

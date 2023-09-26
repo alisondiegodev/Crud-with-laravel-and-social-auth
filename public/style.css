@@ -6,6 +6,7 @@
 }
 
 /* TABBLE */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -21,7 +22,7 @@ th {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-.edit-button, .delete-button {
+.edit-button, .delete-button, .button-w {
     padding: 4px 8px;
     background-color: #fff;
     padding: 5px 20px;
@@ -39,7 +40,7 @@ tr:nth-child(even) {
 
 }
 .delete-button {
-    background-color: #dc3545;
+    background-color: #dc3545 !important;
     color: #fff;
 }
 
@@ -52,4 +53,69 @@ box-icon {
 
 .actions {
     width: 20%;
+}
+
+/* CREATE FORM  */
+
+.form {
+    margin: 20px ;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+.form-group input:focus {
+    border-color: #999;
+}
+
+.submitButton {
+    background-color: #007bff;
+    border: 1px solid #c4c4c4 !important;
+    box-shadow: -4px 5px 9px 0px #d7d7d7;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all .5s ease-in-out;
+}
+
+.submitButton:hover {
+    background-color: #464848;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* OTHERS */
+
+.list-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 20px;
+    height: 55px;
+}
+
+.list-header a {
+    padding: 8px 10px ;
+    background-color: rgb(5, 162, 5);
+    display: flex;
+    gap: 10px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 10px;
 }
