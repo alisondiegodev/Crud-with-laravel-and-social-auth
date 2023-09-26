@@ -111,7 +111,7 @@ label {
     transform: translateY(-3px);
 }
 
-/* OTHERS */
+/* LIST-HEADER */
 
 .list-header {
     display: flex;
@@ -222,6 +222,8 @@ label {
     border-radius: 5px;
     cursor: pointer;
 }
+
+/* OTHERS */
 
 #content {
     transition: all .5s ease-in-out;

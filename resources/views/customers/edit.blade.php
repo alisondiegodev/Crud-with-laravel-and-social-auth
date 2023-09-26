@@ -23,23 +23,27 @@
 
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input value="{{ $user->email }}" type="email" name="email" required>
+                                    <input value="{{ $user->email }}" type="email" onchange="validarEmail(this)"
+                                        id="email" name="email" required>
+                                    <p id="valid" class="valid">Insert valid email.</p>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input value="{{ $user->phone }}" type="text" name="phone" required>
+                                    <input value="{{ $user->phone }}" type="text" maxlength="16" id="phone"
+                                        name="phone" required>
+                                    <p id="validTel" class="valid">Insert valid number.</p>
+
                                 </div>
 
                                 <button type="submit" class="submitButton">Submit</button>
-
-
                             </form>
                         </div>
                     @endif
-
                 </div>
             </div>
         </div>
     </div>
+    <script src="{{ asset('/validatePhone.js') }}"></script>
+    <script src="{{ asset('/validateEmail.js') }}"></script>
 </x-app-layout>

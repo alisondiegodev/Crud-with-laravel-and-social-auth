@@ -47,13 +47,14 @@
                                 @if (isset($users) && count($users) > 0)
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->phone }}</td>
+                                            <td><span>Name:</span> {{ $user->name }}</td>
+                                            <td><span>Email:</span>{{ $user->email }}</td>
+                                            <td><span>Phone:</span>{{ $user->phone }}</td>
                                             <td class="actionButtons">
+                                                <span class="flex-1">Actions:</span>
                                                 <a href="/edit/{{ $user->id }}">
                                                     <button type="submit" class="edit-button">
-                                                        Edit
+                                                        <span>Edit</span>
                                                         <box-icon color='#147a7a' name='edit'></box-icon>
                                                     </button>
                                                 </a>
@@ -62,12 +63,13 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button onclick="confirmDelete(event, {{ $user->id }})"
-                                                        class="delete-button">Delete
+                                                        class="delete-button"><span>Delete</span>
                                                         <box-icon color='#fff' name='trash'></box-icon>
                                                     </button>
                                                 </form>
 
                                             </td>
+
                                         </tr>
                                     @endforeach
                                 @else

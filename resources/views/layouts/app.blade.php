@@ -8,6 +8,7 @@
 
     <title>{{ config('app.name', 'Crud Menvie') }}</title>
     <link rel="stylesheet" href="{{ asset('/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/responsive.css') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

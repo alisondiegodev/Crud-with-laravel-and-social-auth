@@ -35,12 +35,9 @@
                                 <p id="validTel" class="valid">Insert valid number.</p>
 
                             </div>
-
                             <button type="submit" class="submitButton">Submit</button>
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
