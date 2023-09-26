@@ -1,0 +1,55 @@
+/* TEXT */
+.tittle {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* TABBLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.edit-button, .delete-button {
+    padding: 4px 8px;
+    background-color: #fff;
+    padding: 5px 20px;
+    color: #333;
+    border: 1px solid #c4c4c4;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px 1px #d7d7d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+
+}
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.actionButtons {
+    display: flex;
+}
+box-icon {
+    display: flex;
+}
+
+.actions {
+    width: 20%;
+}

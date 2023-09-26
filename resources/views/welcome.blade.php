@@ -1,7 +1,17 @@
-@extends('layouts.main');
+@extends('layouts.main')
 
 @section('content')
-    <h1>{{ $user->name }}</h1>
-    <h1>{{ $user->email }}</h1>
-    <h1>{{ $user->avatar }}</h1>
+    @auth
+        <div>LOGGADO</div>
+
+    @endauth
+    @guest
+        <div>DESLOGADO</div>
+    @endguest
+    <div class="flex justify-center w-screen gap-4">
+        <br><br>
+        <a href="/login">LOGIN</a>
+        <br><br>
+        <a href="/register">REGISTER</a>
+    </div>
 @endsection
