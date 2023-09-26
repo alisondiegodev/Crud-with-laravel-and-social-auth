@@ -231,8 +231,27 @@ label {
     animation: appears .5s linear;
 }
 
+.bg-white {
+    background-color: #fff !important;
+}
+.guestWelcome {
+    display: flex;
+    align-items:baseline;
+    justify-content: flex-start;
+    gap: 20px;
+}
 
+.guestWelcome>div {
+    display: flex;
+    gap: 16px;
+}
 
+.valid {
+    color: red;
+    font-size: 13px;
+    display: none;
+    margin-top: -10px;
+}
 @keyframes appears {
     from {
         opacity: 0;

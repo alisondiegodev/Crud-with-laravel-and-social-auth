@@ -27,93 +27,72 @@
                     <div class="list-header">
                         <h1 class="tittle">Clients</h1>
                         <a href="/create">Create New <box-icon color='#fff' name='user-plus'></box-icon></a>
+
                     </div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th class="actions">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    @auth
 
-                            @if (isset($users) && count($users) > 0)
-                                @foreach ($users as $user)
-                                    <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->phone }}</td>
-                                        <td class="actionButtons">
-                                            <a href="/edit/{{ $user->id }}">
-                                                <button type="submit" class="edit-button">
-                                                    Edit
-                                                    <box-icon color='#147a7a' name='edit'></box-icon>
-                                                </button>
-                                            </a>
-                                            <form id="{{ $user->id }}" action="/delete/{{ $user->id }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button onclick="confirmDelete(event, {{ $user->id }})"
-                                                    class="delete-button">Delete
-                                                    <box-icon color='#fff' name='trash'></box-icon>
-                                                </button>
-                                            </form>
 
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <h1>Nenhum usuário registrado</h1>
-                                    </td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-
-
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th class="actions">Actions</th>
                                 </tr>
-                            @endif
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+
+                                @if (isset($users) && count($users) > 0)
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->phone }}</td>
+                                            <td class="actionButtons">
+                                                <a href="/edit/{{ $user->id }}">
+                                                    <button type="submit" class="edit-button">
+                                                        Edit
+                                                        <box-icon color='#147a7a' name='edit'></box-icon>
+                                                    </button>
+                                                </a>
+                                                <form id="{{ $user->id }}" action="/delete/{{ $user->id }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button onclick="confirmDelete(event, {{ $user->id }})"
+                                                        class="delete-button">Delete
+                                                        <box-icon color='#fff' name='trash'></box-icon>
+                                                    </button>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td>
+                                            <h1>Nenhum usuário registrado</h1>
+                                        </td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+
+
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    @endauth
+                    @guest
+                        <div>
+                            <h1>You need to register and login for see users</h1>
+                        </div>
+                    @endguest
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function confirmDelete(event, id) {
-            event.preventDefault();
-            modal.style.display = "flex";
-            content.style.filter = "blur(2px)"
-            content.style.pointerEvents = "none"
-
-            setTimeout(() => {
-                modal.style.opacity = "100%";
-                modal.style.transform = "translate(-50%, -50%)";
-            }, 100);
-            confirmButton.setAttribute("userId", id);
-        }
-
-        function deleteNow(btn) {
-            const id = btn.getAttribute("userId");
-            const form = document.getElementById(id)
-            form.submit();
-        }
-
-        function closeModal() {
-            modal.style.opacity = "0%";
-            modal.style.transform = "translate(-50%, -44%)";
-            content.style.filter = "blur(0px)";
-            content.style.pointerEvents = "unset"
-
-            setTimeout(() => {
-                modal.style.display = "none"
-            }, 500);
-            confirmButton.setAttribute("userId", "");
-        }
-    </script>
+    <script src="{{ asset('/modal.js') }}"></script>
 </x-app-layout>

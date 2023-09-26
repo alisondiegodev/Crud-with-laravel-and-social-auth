@@ -5,9 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
+
+    public function index()
+    {
+
+        if (Auth::check()) {
+            return redirect('/dashboard');
+        }
+        return view('welcome');
+    }
+
     public function create()
     {
         return view('/customers/create');

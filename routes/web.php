@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    redirect('/dashboard');
-});
+Route::get('/', [CustomerController::class, 'index']);
+
 
 Route::get('/dashboard', [CustomerController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
 

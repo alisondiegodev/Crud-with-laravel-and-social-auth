@@ -9,7 +9,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <h1 class="tittle">Create</h1>
+                    <h1 class="tittle">Edit </h1>
 
                     @if (isset($user))
                         <div class="form">

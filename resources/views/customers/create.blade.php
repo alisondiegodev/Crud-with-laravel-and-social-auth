@@ -17,17 +17,23 @@
 
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" required>
+                                <input placeholder="insert name" type="text" name="name" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" required>
+                                <input placeholder="exemple@gmail.com" onchange="validarEmail(this)" type="email"
+                                    id="email" name="email" required>
+                                <p id="valid" class="valid">Insert valid email.</p>
+
                             </div>
 
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" name="phone" required>
+                                <input placeholder="Insert a valid phone number" maxlength="16" id="phone"
+                                    type="text" name="phone" required>
+                                <p id="validTel" class="valid">Insert valid number.</p>
+
                             </div>
 
                             <button type="submit" class="submitButton">Submit</button>
@@ -39,4 +45,7 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('/validatePhone.js') }}"></script>
+    <script src="{{ asset('/validateEmail.js') }}"></script>
 </x-app-layout>
